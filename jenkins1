@@ -1,0 +1,36 @@
+pipeline {
+        agent any
+                stages {
+                        stage('Build') {
+                                steps {
+                                        echo 'Hi, this is donvic from HAARGA. Now we are building the test_project'
+                                 }
+                        }
+                        stage('Test') {
+                                steps {
+                                      echo 'Engaging For Testing'
+                                 }
+                        }
+                        stage('QA') {
+                      
+                               steps {
+                                        echo 'Quality Analysis Started'
+                                 }
+                         }
+                         stage('Deploy') {
+                                          parallel {
+                                                 stage('Deploy') {
+                                steps {
+                                        input('Do you want to proceed for Deploying')
+                                 }
+                        }
+                                                stage('Monitoring') {
+                                                                    steps {
+                                                                          echo "Project is now under Monitoring"
+                                                                    }
+                                                }
+
+                                         }
+}
+}
+}
